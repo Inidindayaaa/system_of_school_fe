@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { TBody } from '../dataDummy/teachers';
+import { useNavigate } from 'react-router-dom';
+import { TBody } from '../dataDummy/students';
 
-export default function Login() {
+export default function LoginStudents() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     usernameOrEmail: '',
@@ -13,7 +13,7 @@ export default function Login() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -24,23 +24,24 @@ export default function Login() {
     }
 
     // Cek apakah username dan password cocok dengan data di TBody
-    const teacher = TBody.find(el => 
-        el.username === formData.usernameOrEmail && el.password === formData.password
+    const user = TBody.find(el => 
+        el.userName === formData.usernameOrEmail && el.password === formData.password
     );
 
-    if (teacher) {
+    if (user) {
         alert('Login berhasil');
-        navigate(`/dashboard`, {state: teacher});  // Redirect ke dashboard jika login sukses
+        navigate(`/dashboard/students/${user.id}`, { state: { user }});  // Redirect ke dashboard jika login sukses
     } else {
         alert('Login gagal: Username atau password salah.');
     }
 };
 
+
   return (
     <div className='container'>
       <div className='row justify-content-center'>
         <div className='col-md-6'>
-          <h2 className='text-center my-4'>Login</h2>
+          <h2 className='text-center my-4'>Login Students</h2>
           <form onSubmit={handleSubmit}>
             {/* Input untuk Username atau Email */}
             <div className='mb-3'>
@@ -81,11 +82,10 @@ export default function Login() {
               </button>
             </div>
           </form>
-          <Link to="/login/students">
-          <p>login as students</p>
-          </Link>
         </div>
       </div>
     </div>
   );
 }
+
+

@@ -12,6 +12,8 @@ import {
   Attendances,
   Parents,
   Exams,
+  LoginStudents,
+  DashboardStudents
 } from './Pages';
 import { Route, Routes } from 'react-router-dom';
 
@@ -40,6 +42,10 @@ export default function Routers() {
         <Route path='/parents' element={<Parents />} />
 
         <Route path='/exams' element={<Exams />} />
+
+        <Route path='/dashboard/students/:id' element={<DashboardStudents />} />
+
+        <Route path='/login/students' element={<LoginStudents />} />
 
         <Route path='/announcements' element={<Announcements />} />
       </Routes>

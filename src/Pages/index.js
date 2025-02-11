@@ -11,6 +11,8 @@ import Attendances from './Attendances.js';
 import Parents from './Parents.js';
 import Exams from './Exams.js';
 import Announcements from './Announcements.js';
+import LoginStudents from './LoginStudents.js';
+import DashboardStudents from './DashboardStudents.js';
 
 export {
   Dashboard,
@@ -25,4 +27,7 @@ export {
   Attendances,
   Parents,
   Exams,
+  LoginStudents,
+  DashboardStudents
+
 };

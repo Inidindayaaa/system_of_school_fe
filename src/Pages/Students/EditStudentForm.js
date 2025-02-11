@@ -6,6 +6,7 @@ const EditStudentForm = ({ student, onSave, onCancel }) => {
   const [birthdate, setBirthdate] = useState(student?.birthdate);
   const [gender, setGender] = useState(student?.gender);
   const [phone, setPhone] = useState(student?.phone);
+  const [grades, setGrades] = useState(student?.grades);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +17,8 @@ const EditStudentForm = ({ student, onSave, onCancel }) => {
       birthdate,
       gender,
       phone,
+      grades,
+      classes
     };
     onSave(updatedStudent);
   };

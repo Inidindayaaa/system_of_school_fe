@@ -30,6 +30,8 @@ export const TBody = [
     course_id: 3,
     gender: 'Male',
     phone: '457-541-1741',
+    username: 'danyka',
+    password: '123'
   },
   {
     id: 2,
@@ -38,5 +40,7 @@ export const TBody = [
     course_id: 1,
     gender: 'Female',
     phone: '609-916-2910',
+    username: 'leola',
+    password: '123'
   },
 ];
