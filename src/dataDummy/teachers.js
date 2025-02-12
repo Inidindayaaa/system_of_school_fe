@@ -25,7 +25,7 @@ export const THead = [
 export const TBody = [
   {
     id: 1,
-    name: 'Danyka',
+    name: 'Mr.Danyka',
     address: '39852 Spencer Island',
     course_id: 3,
     gender: 'Male',
@@ -35,7 +35,7 @@ export const TBody = [
   },
   {
     id: 2,
-    name: 'Leola',
+    name: 'Mrs.Leola',
     address: '85356 Kiehn Loaf',
     course_id: 1,
     gender: 'Female',
@@ -43,4 +43,6 @@ export const TBody = [
     username: 'leola',
     password: '123'
   },
+  
+  
 ];

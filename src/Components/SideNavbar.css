@@ -1,3 +1,96 @@
 .text-decoration-none{
     color: rgb(0, 0, 0);
 }
+
+
+.sidebar list-unstyled {
+    padding: 0;
+    width: 100%;
+  }
+
+
+
+  /* Sidebar container */
+.col-2 {
+    width: 250px;
+    height: 100vh;
+    background: #343a40;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  /* Sidebar title */
+  /* .sidebar-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  } */
+  
+  /* Menu list */
+  /* .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  } */
+  
+  /* Setiap item menu */
+  /* .sidebar-menu li {
+    width: 100%;
+  }
+   */
+  /* Link dalam menu */
+  .text-decoration-none{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+
+/* .nav-link{
+  list-style: none;
+}  */
+
+
+
+  /* Efek hover */
+  /* .sidebar-link:hover {
+    background: #495057;
+  } */
+  
+  /* Menu aktif */
+  /* .sidebar-menu li.active .sidebar-link {
+    background: #007bff;
+  }
+   */
+  /* Responsive Sidebar */
+  /* @media (max-width: 768px) {
+    .sidebar {
+      width: 200px;
+    }
+  
+    .sidebar-title {
+      font-size: 18px;
+    }
+  }
+   */
+
+
+
+   
+
+
+
+   

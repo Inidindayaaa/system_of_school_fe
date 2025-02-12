@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import SideNavbar from '../../Components/SideNavbar';
-import TableComponents from '../../Components/TableComponents';
-import { THead, TBody } from '../../dataDummy/students'; // Asumsi data dalam format JSON
-import EditStudentForm from './EditStudentForm'; // Import form di sini
-
+import React, { useEffect, useState } from "react";
+import SideNavbar from "../../Components/SideNavbar";
+import TableComponents from "../../Components/TableComponents";
+import { THead, TBody } from "../../dataDummy/students"; // Asumsi data dalam format JSON
+import EditStudentForm from "./EditStudentForm"; // Import form di sini
+import "../../styles/Students.css";
 export default function Students() {
   const [TBodyStudents, setTBodyStudents] = useState(TBody); // Inisialisasi state dengan TBody
   const [showModalEdit, setShowModalEdit] = useState(false);
@@ -37,16 +37,56 @@ export default function Students() {
     setShowModalAdd(false); // Tutup modal setelah menambah
   };
 
+  // return (
+  //   <div className='row'>
+  //     <SideNavbar />
+  //     <div className='col-10 pt-5'>
+  //       <h2 className='text-center'>Students</h2>
+  //       <div className='dashboard-content'>
+  //         <TableComponents
+  //           thead={THead}
+  //           tbody={TBodyStudents}
+  //           buttonName={'Add New Student'}
+  //           handleDelete={handleDelete}
+  //           handleAdd={handleAdd}
+  //           handleEdit={(student) => {
+  //             setSelectedStudent(student);
+  //             setShowModalEdit(true);
+  //           }}
+  //           openAddModal={() => setShowModalAdd(true)}
+  //         />
+
+  //         {/* Modal Form Edit */}
+  //         {showModalEdit && selectedStudent && (
+  //           <EditStudentForm
+  //             student={selectedStudent}
+  //             onSave={handleEdit}
+  //             onCancel={() => setShowModalEdit(false)}
+  //           />
+  //         )}
+
+  //         {/* Modal Form Add */}
+  //         {showModalAdd && (
+  //           <EditStudentForm
+  //             onSave={handleAdd}
+  //             onCancel={() => setShowModalAdd(false)}
+  //           />
+  //         )}
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
+
   return (
-    <div className='row'>
+    <div className="students-container">
       <SideNavbar />
-      <div className='col-10 pt-5'>
-        <h2 className='text-center'>Students</h2>
-        <div className='dashboard-content'>
+      <div className="students-content">
+        <div className="students-wrapper">
+          <h2>Students</h2>
           <TableComponents
             thead={THead}
             tbody={TBodyStudents}
-            buttonName={'Add New Student'}
+            buttonName={"Add New Student"}
             handleDelete={handleDelete}
             handleAdd={handleAdd}
             handleEdit={(student) => {
@@ -55,7 +95,7 @@ export default function Students() {
             }}
             openAddModal={() => setShowModalAdd(true)}
           />
-          
+
           {/* Modal Form Edit */}
           {showModalEdit && selectedStudent && (
             <EditStudentForm

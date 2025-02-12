@@ -1,0 +1,91 @@
+/* Layout utama */
+.students-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar tetap di kiri */
+.sidebar {
+  width: 250px;
+  background: #343a40;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
+
+/* Konten utama */
+.students-content {
+  margin-left: 250px;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Wrapper untuk membatasi lebar konten */
+.students-wrapper {
+  width: 100%;
+  max-width: 900px; /* Batasi lebar maksimal */
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Header halaman */
+.students-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Dashboard content */
+.dashboard-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Table styling */
+.table {
+  margin-top: 20px;
+}
+
+.table th {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+}
+
+.table td {
+  text-align: center;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #4e54c8;
+  border: none;
+  padding: 10px;
+  transition: background 0.3s ease-in-out;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #3b42a1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .students-content {
+    margin-left: 200px;
+    padding: 15px;
+  }
+
+  .students-wrapper {
+    max-width: 100%;
+  }
+}

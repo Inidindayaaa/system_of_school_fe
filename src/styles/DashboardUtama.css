@@ -1,0 +1,20 @@
+/* Styling untuk container */
+.container {
+  max-width: 1100px;
+}
+
+/* Styling untuk card */
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Styling untuk grid */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

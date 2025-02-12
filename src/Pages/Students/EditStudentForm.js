@@ -6,7 +6,8 @@ const EditStudentForm = ({ student, onSave, onCancel }) => {
   const [birthdate, setBirthdate] = useState(student?.birthdate);
   const [gender, setGender] = useState(student?.gender);
   const [phone, setPhone] = useState(student?.phone);
-  const [grades, setGrades] = useState(student?.grades);
+  const [grade, setGrade] = useState(student?.grade);
+  const [class_id, setClass] = useState(student?.class_id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,8 +18,8 @@ const EditStudentForm = ({ student, onSave, onCancel }) => {
       birthdate,
       gender,
       phone,
-      grades,
-      classes
+      grade,
+      class_id
     };
     onSave(updatedStudent);
   };
@@ -97,6 +98,18 @@ const EditStudentForm = ({ student, onSave, onCancel }) => {
                   <option value='Other'>Other</option>
                 </select>
               </div>
+
+              <div className='form-group'>
+                <label htmlFor='class_id'>Class id</label>
+                <input
+                  type='text'
+                  className='form-control'
+                  id='class_id'
+                  value={class_id}
+                  onChange={(e) => setClass(e.target.value)}
+                  required
+                />
+              </div>
               <div className='form-group'>
                 <label htmlFor='phone'>Phone</label>
                 <input
@@ -105,6 +118,17 @@ const EditStudentForm = ({ student, onSave, onCancel }) => {
                   id='phone'
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
+              </div>
+              <div className='form-group'>
+                <label htmlFor='grade'>Grade</label>
+                <input
+                  type='text'
+                  className='form-control'
+                  id='grade'
+                  value={grade}
+                  onChange={(e) => setGrade(e.target.value)}
                   required
                 />
               </div>
