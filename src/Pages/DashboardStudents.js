@@ -1,64 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-const pembayaranData = [
-  {
-    id: 1,
-    name: "SPP Bulan Januari",
-    amount: 500000,
-    status: "Lunas",
-    date: "2024-01-10",
-  },
-  {
-    id: 2,
-    name: "SPP Bulan Februari",
-    amount: 500000,
-    status: "Belum Lunas",
-    date: "2024-02-10",
-  },
-  {
-    id: 3,
-    name: "Seragam Sekolah",
-    amount: 750000,
-    status: "Lunas",
-    date: "2024-03-05",
-  },
-  {
-    id: 4,
-    name: "Buku Pelajaran",
-    amount: 300000,
-    status: "Belum Lunas",
-    date: "2024-04-01",
-  },
-];
+import { Ellipsis } from "react-spinners-css";
+import { TBody } from "../dataDummy/students";
 
 export default function DashboardStudents() {
   const location = useLocation();
   const navigate = useNavigate();
-  const user = location.state?.user; // Ambil user dari state
+  const user = location.state?.user;
+  const [isLoading, setIsLoading] = useState(false);
+  const [students, setStudents] = useState(TBody);
+  const [currentUser, setCurrentUser] = useState(null);
 
-  if (!user) {
+  useEffect(() => {
+    const foundStudent = students.find((s) => s.id === user?.id);
+    setCurrentUser(foundStudent || null);
+  }, [user, students]);
+
+  if (!currentUser) {
     return <h1>Data user tidak ditemukan!</h1>;
   }
 
+  const BayarWoy = (id) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setStudents((prevStudents) =>
+        prevStudents.map((student) =>
+          student.id === currentUser.id
+            ? {
+                ...student,
+                pembayaran: student.pembayaran.map((p) =>
+                  p.id === id ? { ...p, status: "Lunas" } : p
+                ),
+              }
+            : student
+        )
+      );
+      setCurrentUser((prevUser) => ({
+        ...prevUser,
+        pembayaran: prevUser.pembayaran.map((p) =>
+          p.id === id ? { ...p, status: "Lunas" } : p
+        ),
+      }));
+      alert("Pembayaran berhasil!");
+    }, 3000);
+  };
+
   return (
     <div style={styles.container}>
-      {/* Bagian Kiri - Data User */}
       <div style={styles.userInfo}>
         <p>
-          <strong>NIS:</strong> {user.nis}
+          <strong>NIS:</strong> {currentUser.nis}
         </p>
         <p>
-          <strong>Name:</strong> {user.name}
+          <strong>Name:</strong> {currentUser.name}
         </p>
         <p>
-          <strong>Address:</strong> {user.address}
+          <strong>Address:</strong> {currentUser.address}
         </p>
         <p>
-          <strong>No telpon:</strong> {user.noTelpon}
+          <strong>No Telpon:</strong> {currentUser.phone}
         </p>
         <p>
-          <strong>Clases:</strong> {user.clases}
+          <strong>Class:</strong> {currentUser.class_id}
         </p>
 
         <div>
@@ -66,19 +70,19 @@ export default function DashboardStudents() {
             <strong>Pembayaran:</strong>
           </p>
           <ul style={styles.list}>
-            {pembayaranData.map((item) => (
+            {currentUser.pembayaran.map((item) => (
               <li key={item.id} style={styles.listItem}>
                 <span>
                   <strong>{item.name}</strong> - Rp{" "}
-                  {item.amount.toLocaleString()} ({item.status})
+                  {item.amount.toLocaleString("id-ID")} ({item.status})
                 </span>
 
-                {item.status != "Lunas" && (
+                {item.status !== "Lunas" && (
                   <button
                     style={styles.button}
-                    onClick={() => alert("Pembayaran berhasil!")}
+                    onClick={() => BayarWoy(item.id)}
                   >
-                    Bayar
+                    {isLoading ? <Ellipsis size={20} color="#fff" /> : "Bayar"}
                   </button>
                 )}
               </li>
@@ -91,34 +95,30 @@ export default function DashboardStudents() {
         </div>
       </div>
 
-      {/* Bagian Kanan - Foto */}
       <div style={styles.photoContainer}>
         <h2>Photo</h2>
         <img
-          src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" // Bisa diganti dengan user.photo jika ada
+          src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
           alt="User Profile"
           style={styles.photo}
         />
       </div>
-
-      {/* Tombol Bayar */}
     </div>
   );
 }
 
-// CSS in JS Styles
 const styles = {
   container: {
     display: "flex",
-    flexDirection: "row", // Susun elemen secara horizontal
-    alignItems: "center", // Pusatkan elemen secara vertikal
-    justifyContent: "space-between", // Jarak antar elemen
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     padding: "20px",
     border: "1px solid #ddd",
     borderRadius: "10px",
     maxWidth: "100%",
     margin: "auto",
-    flexWrap: "wrap", // Jika layar kecil, elemen akan turun ke bawah
+    flexWrap: "wrap",
   },
   userInfo: {
     flex: 1,
@@ -134,10 +134,18 @@ const styles = {
     borderRadius: "50%",
     border: "2px solid #333",
   },
-  buttonContainer: {
-    width: "100%", // Agar tombol ada di bawah
-    textAlign: "center",
-    marginTop: "20px",
+  list: {
+    listStyleType: "none",
+    padding: 0,
+  },
+  listItem: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#f8f9fa",
+    padding: "10px",
+    marginBottom: "10px",
+    borderRadius: "5px",
   },
   button: {
     marginLeft: "10px",

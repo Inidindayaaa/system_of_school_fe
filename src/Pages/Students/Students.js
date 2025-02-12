@@ -4,7 +4,10 @@ import TableComponents from "../../Components/TableComponents";
 import { THead, TBody } from "../../dataDummy/students"; // Asumsi data dalam format JSON
 import EditStudentForm from "./EditStudentForm"; // Import form di sini
 import "../../styles/Students.css";
+import { useNavigate } from "react-router-dom";
+
 export default function Students() {
+  const navigate = useNavigate();
   const [TBodyStudents, setTBodyStudents] = useState(TBody); // Inisialisasi state dengan TBody
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [showModalAdd, setShowModalAdd] = useState(false);
@@ -37,6 +40,9 @@ export default function Students() {
     setShowModalAdd(false); // Tutup modal setelah menambah
   };
 
+  const handleDetail = (data) => {
+    navigate(`/student/${data.id}`, { state: { user: { data } } });
+  };
   // return (
   //   <div className='row'>
   //     <SideNavbar />
@@ -89,6 +95,7 @@ export default function Students() {
             buttonName={"Add New Student"}
             handleDelete={handleDelete}
             handleAdd={handleAdd}
+            handleDetail={handleDetail}
             handleEdit={(student) => {
               setSelectedStudent(student);
               setShowModalEdit(true);

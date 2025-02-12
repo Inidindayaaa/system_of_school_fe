@@ -15,6 +15,7 @@ import {
   LoginStudents,
   DashboardStudents,
   DashboardUtama,
+  StudentId,
 } from "./Pages";
 import { Route, Routes } from "react-router-dom";
 // import AboutUs from "./Pages/AboutUs";
@@ -28,6 +29,8 @@ export default function Routers() {
         <Route path="/dashboard" element={<Dashboard />} />
 
         <Route path="/students" element={<Students />} />
+
+        <Route path="/student/:id" element={<StudentId />} />
 
         <Route path="/course" element={<Course />} />
 

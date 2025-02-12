@@ -5,6 +5,7 @@ import "./SideNavbar.css";
 export default function SideNavbar() {
   const location = useLocation(); // Untuk menandai menu yang aktif
   const navigate = useNavigate();
+
   const handleLogout = () => {
     const isConfirmed = window.confirm("Apakah Anda yakin ingin Logout?");
     if (isConfirmed) {
@@ -62,12 +63,8 @@ export default function SideNavbar() {
         Back
       </button> */}
 
-      <button className="btn btn-secondary" onClick={() => navigate(-1)}>
-        <li className="nav-item" onClick={handleLogout}>
-          <Link className="nav-link" to="/ ">
-            Logout
-          </Link>
-        </li>
+      <button className="btn btn-secondary" onClick={handleLogout}>
+        <Link className="nav-link">Logout</Link>
       </button>
       {/* <li className="nav-item" onClick={handleLogout}>
         <Link className="nav-link" to="/login">

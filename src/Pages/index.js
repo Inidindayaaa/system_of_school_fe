@@ -13,6 +13,7 @@ import Announcements from "./Announcements.js";
 import LoginStudents from "./LoginStudents.js";
 import DashboardStudents from "./DashboardStudents.js";
 import DashboardUtama from "./DashboardUtama.js";
+import StudentId from "./Students/StudentId.js";
 
 export {
   Dashboard,
@@ -30,4 +31,5 @@ export {
   LoginStudents,
   DashboardStudents,
   DashboardUtama,
+  StudentId,
 };

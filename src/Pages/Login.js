@@ -32,7 +32,7 @@ export default function Login() {
 
     if (teacher) {
       alert("Login berhasil");
-      navigate(`/dashboard`, { state: teacher }); // Redirect ke dashboard jika login sukses
+      navigate(`/students`, { state: teacher }); // Redirect ke dashboard jika login sukses
     } else {
       alert("Login gagal: Username atau password salah.");
     }

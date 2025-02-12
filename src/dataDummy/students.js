@@ -41,6 +41,15 @@ export const TBody = [
     grade: "A",
     userName: "jhon",
     password: "123",
+    pembayaran: [
+      {
+        id: 1,
+        name: "SPP Bulan Januari",
+        amount: 500000,
+        status: "Belum Lunas",
+        date: "2024-01-10",
+      },
+    ],
   },
   {
     id: 2,
@@ -54,6 +63,15 @@ export const TBody = [
     grade: "C",
     userName: "jane",
     password: "123",
+    pembayaran: [
+      {
+        id: 1,
+        name: "SPP Bulan Januari",
+        amount: 500000,
+        status: "Belum Lunas",
+        date: "2024-01-10",
+      },
+    ],
   },
   {
     id: 3,
@@ -67,6 +85,15 @@ export const TBody = [
     grade: "B",
     userName: "michael",
     password: "123",
+    pembayaran: [
+      {
+        id: 1,
+        name: "SPP Bulan Januari",
+        amount: 500000,
+        status: "Lunas",
+        date: "2024-01-10",
+      },
+    ],
   },
   {
     id: 4,
@@ -80,5 +107,14 @@ export const TBody = [
     grade: "A",
     userName: "emily",
     password: "123",
+    pembayaran: [
+      {
+        id: 1,
+        name: "SPP Bulan Januari",
+        amount: 500000,
+        status: "Belum Lunas",
+        date: "2024-01-10",
+      },
+    ],
   },
 ];
